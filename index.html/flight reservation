@@ -1,0 +1,102 @@
+class FlightReservationSystem:
+    def __init__(self):
+        self.flights = {}  # Dictionary to hold flight details
+        self.reservations = {}  # Dictionary to hold reservations
+
+    def add_flight(self):
+        """Add a new flight with available seats."""
+        flight_number = input("Enter flight number: ")
+        try:
+            seats = int(input("Enter the number of seats: "))
+            # Initialize a list of seat availability (1 for available, 0 for booked)
+            self.flights[flight_number] = [1] * seats
+            print(f"Flight {flight_number} added with {seats} seats.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number of seats.")
+
+    def view_flights(self):
+        """View all available flights and their available seats."""
+        print("Available Flights:")
+        for flight, seats in self.flights.items():
+            available_seats = sum(seats)  # Count available seats
+            print(f"Flight {flight}: {available_seats} seats available")
+        if not self.flights:
+            print("No flights available.")
+
+    def book_flight(self):
+        """Book a flight for a passenger, specifying the desired seat."""
+        flight_number = input("Enter flight number: ")
+        if flight_number in self.flights:
+            available_seats = [index + 1 for index, seat in enumerate(self.flights[flight_number]) if seat == 1]
+            if available_seats:
+                print(f"Available seats for flight {flight_number}: {', '.join(map(str, available_seats))}")
+                try:
+                    seat_choice = int(input("Enter the seat number you want to book: "))
+                    if seat_choice in available_seats:
+                        passenger_name = input("Enter passenger name: ")
+                        self.flights[flight_number][seat_choice - 1] = 0  # Mark seat as booked
+                        reservation_id = len(self.reservations) + 1
+                        self.reservations[reservation_id] = (flight_number, passenger_name, seat_choice)
+                        print(f"Reservation successful! Reservation ID: {reservation_id}, Seat: {seat_choice}")
+                    else:
+                        print("Invalid seat choice. Please select a valid available seat.")
+                except ValueError:
+                    print("Invalid input. Please enter a valid seat number.")
+            else:
+                print("Sorry, no available seats on this flight.")
+        else:
+            print("Sorry, this flight does not exist.")
+
+    def cancel_reservation(self):
+        """Cancel a reservation."""
+        try:
+            reservation_id = int(input("Enter reservation ID: "))
+            if reservation_id in self.reservations:
+                flight_number, _, seat_number = self.reservations.pop(reservation_id)
+                self.flights[flight_number][seat_number - 1] = 1  # Mark seat as available
+                print(f"Reservation {reservation_id} cancelled successfully.")
+            else:
+                print("Reservation ID not found.")
+        except ValueError:
+            print("Invalid input. Please enter a valid reservation ID.")
+
+    def view_reservations(self):
+        """View all reservations."""
+        print("Current Reservations:")
+        for reservation_id, (flight_number, passenger_name, seat_number) in self.reservations.items():
+            print(f"Reservation ID: {reservation_id}, Flight: {flight_number}, Passenger: {passenger_name}, Seat: {seat_number}")
+        if not self.reservations:
+            print("No reservations found.")
+
+# Main menu loop
+if __name__ == "__main__":
+    system = FlightReservationSystem()
+
+    while True:
+        print("\n--- Flight Reservation System Menu ---")
+        print("1. Add Flight")
+        print("2. View Flights")
+        print("3. Book Flight")
+        print("4. Cancel Reservation")
+        print("5. View Reservations")
+        print("6. Exit")
+
+        try:
+            choice = int(input("Enter your choice (1-6): "))
+            if choice == 1:
+                system.add_flight()
+            elif choice == 2:
+                system.view_flights()
+            elif choice == 3:
+                system.book_flight()
+            elif choice == 4:
+                system.cancel_reservation()
+            elif choice == 5:
+                system.view_reservations()
+            elif choice == 6:
+                print("Exiting the system. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please select a number between 1 and 6.")
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 6.")
