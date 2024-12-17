@@ -1,11 +1,10 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #F5F7FA;
@@ -13,7 +12,6 @@ body {
     line-height: 1.6;
 }
 
-/* Header Styles */
 header {
     background-color: #4A90E2;
     color: white;
@@ -44,14 +42,12 @@ nav a:hover {
     color: #50E3C2;
 }
 
-/* Container */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Flex Layout */
 .flex {
     display: flex;
     gap: 30px;
@@ -59,7 +55,6 @@ nav a:hover {
     justify-content: space-between;
 }
 
-/* Profile Section */
 .profile-section {
     flex: 1;
     background-color: white;
@@ -91,7 +86,6 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
-/* Portfolio Section */
 .portfolio-section {
     flex: 2;
     background-color: white;
@@ -139,7 +133,6 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -177,7 +170,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* Footer Section */
 footer {
     background-color: #34495e;
     color: white;
@@ -195,7 +187,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .flex {
         flex-direction: column;
