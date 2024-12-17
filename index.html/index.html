@@ -4,175 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jerick Francis Mercado - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #F5F7FA; 
-            color: #333333; 
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #4A90E2; 
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        header {
-            background-color: #4A90E2; 
-            color: white;
-            padding: 30px 0; 
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 3em; 
-            font-weight: 900; 
-            color: white; 
-        }
-
-        nav {
-            margin-top: 10px;
-        }
-
-        nav a {
-            margin: 0 20px;
-            color: white;
-            font-size: 16px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: #50E3C2; 
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .flex {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
-
-        .profile-section {
-            flex: 1;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #50E3C2;
-            margin-bottom: 20px;
-        }
-
-        .profile-section h2 {
-            margin-top: 0;
-            font-size: 24px;
-            color: #4A90E2; 
-        }
-
-        .portfolio-section {
-            flex: 2;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-top: 0.5in;
-        }
-
-        .portfolio-section h2 {
-            margin-top: 0;
-            color: #4A90E2;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .portfolio-box {
-            background-color: #ecf0f1; 
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        .portfolio-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-box img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .portfolio-box h3 {
-            color: #4A90E2; 
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #34495e;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
-        }
-
-        footer a {
-            color: #50E3C2; 
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .flex {
-                flex-direction: column;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px 0;
-            }
-        }
-    </style>
+    <!-- style css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -207,7 +40,7 @@
                 <h2>My Projects</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-box">
-                    <p>Facebook: <a href="https://github.com/mercado21-lab/mercado21-lab.github.io/blob/main/index.html/flight%20reservation" target="_blank">Jerick Francis Mercado</a></p>
+                        <img src="project1.jpg" alt="Project 1">
                         <h3>Project 1</h3>
                         <p>A web application that solves problem X with features such as Y and Z.</p>
                     </div>
@@ -232,11 +65,12 @@
     </div>
 
     <footer id="contact">
-          <p>contact me: </p>
+        <p>Contact me:</p>
         <p>Facebook: <a href="https://www.facebook.com/jerick.francis.mercado/" target="_blank">Jerick Francis Mercado</a></p>
         <p>Email: <a href="mailto:mercadojerick027@gmail.com">mercadojerick027@gmail.com</a></p>
-      <p>Phone: <a href="tel:+639813815220">+63 9813815220</a></p>
+        <p>Phone: <a href="tel:+639813815220">+63 9813815220</a></p>
         <p>&copy; 2024 Jerick Francis Mercado. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
