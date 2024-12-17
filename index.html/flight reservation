@@ -1,102 +1,208 @@
-class FlightReservationSystem:
-    def __init__(self):
-        self.flights = {}  # Dictionary to hold flight details
-        self.reservations = {}  # Dictionary to hold reservations
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    def add_flight(self):
-        """Add a new flight with available seats."""
-        flight_number = input("Enter flight number: ")
-        try:
-            seats = int(input("Enter the number of seats: "))
-            # Initialize a list of seat availability (1 for available, 0 for booked)
-            self.flights[flight_number] = [1] * seats
-            print(f"Flight {flight_number} added with {seats} seats.")
-        except ValueError:
-            print("Invalid input. Please enter a valid number of seats.")
+/* Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F7FA;
+    color: #333333;
+    line-height: 1.6;
+}
 
-    def view_flights(self):
-        """View all available flights and their available seats."""
-        print("Available Flights:")
-        for flight, seats in self.flights.items():
-            available_seats = sum(seats)  # Count available seats
-            print(f"Flight {flight}: {available_seats} seats available")
-        if not self.flights:
-            print("No flights available.")
+/* Header Styles */
+header {
+    background-color: #4A90E2;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    def book_flight(self):
-        """Book a flight for a passenger, specifying the desired seat."""
-        flight_number = input("Enter flight number: ")
-        if flight_number in self.flights:
-            available_seats = [index + 1 for index, seat in enumerate(self.flights[flight_number]) if seat == 1]
-            if available_seats:
-                print(f"Available seats for flight {flight_number}: {', '.join(map(str, available_seats))}")
-                try:
-                    seat_choice = int(input("Enter the seat number you want to book: "))
-                    if seat_choice in available_seats:
-                        passenger_name = input("Enter passenger name: ")
-                        self.flights[flight_number][seat_choice - 1] = 0  # Mark seat as booked
-                        reservation_id = len(self.reservations) + 1
-                        self.reservations[reservation_id] = (flight_number, passenger_name, seat_choice)
-                        print(f"Reservation successful! Reservation ID: {reservation_id}, Seat: {seat_choice}")
-                    else:
-                        print("Invalid seat choice. Please select a valid available seat.")
-                except ValueError:
-                    print("Invalid input. Please enter a valid seat number.")
-            else:
-                print("Sorry, no available seats on this flight.")
-        else:
-            print("Sorry, this flight does not exist.")
+header h1 {
+    font-size: 3em;
+    font-weight: 900;
+    color: white;
+}
 
-    def cancel_reservation(self):
-        """Cancel a reservation."""
-        try:
-            reservation_id = int(input("Enter reservation ID: "))
-            if reservation_id in self.reservations:
-                flight_number, _, seat_number = self.reservations.pop(reservation_id)
-                self.flights[flight_number][seat_number - 1] = 1  # Mark seat as available
-                print(f"Reservation {reservation_id} cancelled successfully.")
-            else:
-                print("Reservation ID not found.")
-        except ValueError:
-            print("Invalid input. Please enter a valid reservation ID.")
+nav {
+    margin-top: 10px;
+}
 
-    def view_reservations(self):
-        """View all reservations."""
-        print("Current Reservations:")
-        for reservation_id, (flight_number, passenger_name, seat_number) in self.reservations.items():
-            print(f"Reservation ID: {reservation_id}, Flight: {flight_number}, Passenger: {passenger_name}, Seat: {seat_number}")
-        if not self.reservations:
-            print("No reservations found.")
+nav a {
+    margin: 0 20px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
 
-# Main menu loop
-if __name__ == "__main__":
-    system = FlightReservationSystem()
+nav a:hover {
+    color: #50E3C2;
+}
 
-    while True:
-        print("\n--- Flight Reservation System Menu ---")
-        print("1. Add Flight")
-        print("2. View Flights")
-        print("3. Book Flight")
-        print("4. Cancel Reservation")
-        print("5. View Reservations")
-        print("6. Exit")
+/* Container */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        try:
-            choice = int(input("Enter your choice (1-6): "))
-            if choice == 1:
-                system.add_flight()
-            elif choice == 2:
-                system.view_flights()
-            elif choice == 3:
-                system.book_flight()
-            elif choice == 4:
-                system.cancel_reservation()
-            elif choice == 5:
-                system.view_reservations()
-            elif choice == 6:
-                print("Exiting the system. Goodbye!")
-                break
-            else:
-                print("Invalid choice. Please select a number between 1 and 6.")
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 6.")
+/* Flex Layout */
+.flex {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* Profile Section */
+.profile-section {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #50E3C2;
+    margin-bottom: 20px;
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #4A90E2;
+}
+
+.profile-section ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.profile-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    flex: 2;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-section h2 {
+    margin-top: 0;
+    color: #4A90E2;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-box {
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.portfolio-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.portfolio-box h3 {
+    color: #4A90E2;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: #4A90E2;
+    margin-bottom: 15px;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Footer Section */
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #50E3C2;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
